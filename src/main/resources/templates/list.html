@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>
+</head>
+<body>
+<!--<div class="col-3"></div>-->
+<!--<div class="container col-6">-->
+<!--    <h1 style="text-align: center">Manage User</h1>-->
+<!--    <table class="table table-active">-->
+<!--        <tr>-->
+<!--            <th>Name</th>-->
+<!--            <th>Email</th>-->
+<!--            <th>Phone</th>-->
+<!--            <th>Actions</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="user : ${users}">-->
+<!--            <td th:text="${user.name}"></td>-->
+<!--            <td th:text="${user.email}"></td>-->
+<!--            <td th:text="${user.phone}"></td>-->
+<!--            <td>-->
+<!--                <a th:href="@{/edit?id={id}(id=${user.id})}" class="btn btn-primary">Edit</a>-->
+<!--                <a th:href="@{/delete?id={id}(id=${user.id})}" class="btn btn-danger">Delete</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    <a href="/add" class="btn btn-success">Add User</a>-->
+<!--</div>-->
+<div id="wrapper">
+    <div id="header">
+        <h2>CRM - Customer Relationship Manager</h2>
+    </div>
+</div>
+<div id="container">
+    <div id="content">
+        <!-- Add new button - Add New Customer -->
+        <a href="/add" class="btn btn-success">Add User</a>-->
+        <form action="searchCustomer" style="text-align: center">
+            <input type="text" id="dataSeach" name="dataSeach">
+            <input type="submit" value="Search">
+        </form>
+        <br>
+        <!-- Add your html table here -->
+        <table class="table table-light table-striped">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+                <tr>
+                    <td>${tempCustomer.firstName}</td>
+                    <td>${tempCustomer.lastName}</td>
+                    <td>${tempCustomer.email}</td>
+                    <td>
+                        <a th:href="@{/edit?id={id}(id=${user.id})}"
+                           onclick="if (!(confirm('Ban chac chan muon xoa khong?'))) return false">Delete</a>
+                        <a th:href="@{/delete?id={id}(id=${user.id})}">Update</a>
+                    </td>
+                </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

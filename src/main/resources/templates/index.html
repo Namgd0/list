@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>
+</head>
+<body>
+<!--<div class="col-3"></div>-->
+<div class="container col-12">
+    <h1 style="text-align: center">Danh sách hàng hóa</h1>
+    <table class="table table-active">
+        <tr style="background-color: lightpink">
+            <th>Tên hàng</th>
+            <th>Loại hàng</th>
+            <th>Số lượng</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="user : ${users}" style="background-color: white">
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.phone}"></td>
+            <td>
+                <a th:href="@{/edit?id={id}(id=${user.id})}" class="btn btn-primary">Sửa</a>
+                <a th:href="@{/delete?id={id}(id=${user.id})}" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/add" class="btn btn-success">Thêm hàng hóa</a>
+</div>
+</body>
+</html>
